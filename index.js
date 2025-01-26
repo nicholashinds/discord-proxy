@@ -22,6 +22,7 @@ app.post("/create-invite", async (req, res) => {
             { max_uses: 1, unique: true, max_age: 86400 },
             { headers: { Authorization: `Bot ${DISCORD_TOKEN}`, "Content-Type": "application/json" } }
         );
+        console.log("Request received.");
         res.json(response.data);
     } catch (error) {
         res.status(error.response?.status || 500).json(error.response?.data || { error: "Unknown error" });
